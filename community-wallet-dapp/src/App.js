@@ -113,11 +113,7 @@ function App() {
       <p className='lead' >
         This is where you can describe your cause or plan. Pitch your community!
       </p>
-      <p>  
-        More description here.  filler text. Sed nec magna quis arcu posuere viverra at in velit. Phasellus ac congue nisl, eget maximus tellus. Integer nec tortor sagittis, suscipit felis nec, 
-        tincidunt turpis. Cras ultrices eros congue, viverra mauris sed, aliquam tortor. Fusce ornare nibh in diam sodales laoreet. Aliquam pretium, 
-        turpis ac placerat accumsan, mi erat rutrum ipsum, vitae elementum velit urna in quam. Integer imperdiet egestas enim, sed gravida dolor pulvinar dictum. 
-      </p>
+      
       <h3>Our Goal</h3>
       
       <div className="progress-label col-8 offset-2 mb-2">

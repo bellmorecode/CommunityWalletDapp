@@ -105,7 +105,7 @@ function App() {
     <div className="App">
       <h1>Community Wallet Site!</h1>
       <p className='lead'>
-        Hi. This is our sample community site donation page.
+        Hi. This is a Community Wallet Donation demo app.
       </p>
       <p className='lead' >
         This is where you can describe your cause or plan. Pitch your community!

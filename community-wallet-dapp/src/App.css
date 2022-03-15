@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+body {
+  background-color: bisque;
+}
+.App { 
+  padding-block-start: 5vh;
+  text-align: center; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.progress {
+  box-shadow: 2px 2px 2px 2px #33333344;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.connect-wallet-button {
+  font-size: 1.2em;
+  padding: 1vh 6vw;
+  margin-block: 3vh;
+  border-color: 1px solid #115522;
+  background-color: #229933;
+  color: whitesmoke;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 2px 2px 2px 2px #33333344;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+p { 
+  max-width: 70vw; 
+  margin-inline: auto;
+  margin-block-end: 4vh;
 }
 
-.App-link {
-  color: #61dafb;
+h1 { 
+  margin-block-end: 4vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.progress-label {
+  margin-block-start: 2vh;
+  font-weight: 600; font-size: 1.1em;
+}
+
+.donateForm {
+  box-shadow: 2px 2px 2px 2px #33333344;
+  border-radius: 10px;
+}
+
+.donateButton {
+  color: whitesmoke;
+  border-color: 1px solid #115522;
+  background-color: #229933;
+  padding: 2px 20px;
+  border-radius: 10px;
+}
+
+.eth-label {
+  font-weight: 800;
+}
+
+.notice {
+  color: red;
+  font-size: 0.9em;
+  max-width: 75vw;
+  margin-inline: auto;
+  margin-block: 20px;
 }

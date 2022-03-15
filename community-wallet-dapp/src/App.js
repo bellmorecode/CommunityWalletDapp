@@ -7,7 +7,6 @@ function App() {
   const wei_per_eth = new BigNumber(10).pow(18);
   const [currentAccount, setCurrentAccount] = useState(null);
   const [connectErrorMessage, setConnectErrorMessage] = useState(null);
-  const [commWalletInfo,setCommWalletInfo] = useState(null);
   const [commWalletTotal, setCommWalletTotal] = useState(0.1092359);
   // this is where you set your community wallet and your goal in Ethereum. 
   // this is setup as an array, but the UI presently only supports the first item in the list.
@@ -24,9 +23,10 @@ function App() {
             .then(wallets => {
               if (wallets.length !== 0) {
                 setCurrentAccount(wallets[0]);
+                
               }
             })
-            .catch(err => { setCommWalletInfo(err.message); });
+            .catch(err => { setConnectErrorMessage(err.message); });
       }
   }
   const connectWalletButton = () => {
@@ -36,36 +36,9 @@ function App() {
       </button>
     )
   }
-  const checkWalletAccess = () => {
-    if (window.ethereum) {
-      let eth = window.ethereum;
-      eth.request({method: 'eth_accounts'}).then(wallets => {
-          if (wallets.length > 0) {
-            setCurrentAccount(wallets[0]);
-          }
-      }).catch(err => setConnectErrorMessage(err.message));
-    }
-  };
-
   const donateAmountChangedHandler = () => {
       console.log({changed: 1});
   }
-
-  const loadCommWalletTotals = () => {
-      if (window.ethereum) {
-        let eth = window.ethereum;
-        //console.log(`connection to wallet: ${comm_wallet.wallet}`);
-        let provider = new ethers.providers.Web3Provider(eth);
-        let signer = provider.getSigner();
-        provider.getBalance(comm_wallet.wallet).then(output => {
-          let wallet_balance = output.toNumber()  / wei_per_eth;
-          //console.log({balance: wallet_balance});
-          setCommWalletTotal(wallet_balance);
-        });
-        
-      }
-  };
-
   const handleDonateButton = () => {
     let comm_wallet = getCommunityWalletDetails()[0];
     let amt = document.getElementById('donateAmount').value;
@@ -98,9 +71,39 @@ function App() {
   const clearErrorMessageHandler = () => {
     setConnectErrorMessage(null);
   }
-
   let progress_percent = commWalletTotal / comm_wallet.goal * 100;
-  useEffect(() => { checkWalletAccess(); loadCommWalletTotals(); }, []);
+  
+  useEffect(() => {
+    const loadCommWalletTotals = () => {
+      if (window.ethereum) {
+        let eth = window.ethereum;
+        console.log(`connection to wallet: ${comm_wallet.wallet}`);
+        let provider = new ethers.providers.Web3Provider(eth);
+        provider.getBalance(comm_wallet.wallet).then(output => {
+          let wallet_balance = output.toNumber()  / wei_per_eth;
+          console.log({balance: wallet_balance});
+          setCommWalletTotal(wallet_balance);
+        });
+        
+      }
+  };
+  loadCommWalletTotals();    
+  }, [])
+
+  useEffect(() => {
+    const checkWalletAccess = () => {
+      if (window.ethereum) {
+        let eth = window.ethereum;
+        eth.request({method: 'eth_accounts'}).then(wallets => {
+            if (wallets.length > 0) {
+              setCurrentAccount(wallets[0]);
+            }
+        }).catch(err => setConnectErrorMessage(err.message));
+      }
+    };
+    checkWalletAccess();    
+  }, []);
+  
   return (
     <div className="App">
       <h1>Community Wallet Site!</h1>
@@ -128,11 +131,15 @@ function App() {
       </div>
 
       <div className='mt-2 mb-4'>
-        Our Wallet: <a href={`https://etherscan.io/address/${comm_wallet.wallet}`} target='_blank' title='View Wallet on Etherscan'> {comm_wallet.wallet} </a>
+        Our Wallet: <a href={`https://etherscan.io/address/${comm_wallet.wallet}`} rel="noreferrer" target='_blank' title='View Wallet on Etherscan'> {comm_wallet.wallet} </a>
       </div>
       
       {currentAccount ? donateForm() : connectWalletButton() }
       <div className='notice' onClick={clearErrorMessageHandler} title={connectErrorMessage}>{connectErrorMessage}</div>
+
+      <div className='mt-4'>
+          <small>open source: <a href='https://github.com/bellmorecode/CommunityWalletDapp' title='Link to Source Code (github)' rel="noreferrer" target='_blank'>bellmorecode/CommunityWalletDapp</a></small>
+      </div>
     </div>
   );
 }

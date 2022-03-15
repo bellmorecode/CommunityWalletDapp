@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1b01a6ba-c073-4c81-9bc7-33258c01250e/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/communitywalletdemo",
+    "appService.deploySubpath": "."
+}

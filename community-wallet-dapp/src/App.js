@@ -7,7 +7,7 @@ function App() {
   const wei_per_eth = new BigNumber(10).pow(18);
   const [currentAccount, setCurrentAccount] = useState(null);
   const [connectErrorMessage, setConnectErrorMessage] = useState(null);
-  const [commWalletTotal, setCommWalletTotal] = useState(0.1092359);
+  const [commWalletTotal, setCommWalletTotal] = useState(0.000000001);
   // this is where you set your community wallet and your goal in Ethereum. 
   // this is setup as an array, but the UI presently only supports the first item in the list.
   const getCommunityWalletDetails = () => {

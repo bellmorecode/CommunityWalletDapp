@@ -1,6 +1,8 @@
 body {
   background-color: bisque;
+  
 }
+.hidden { display: none; }
 .App { 
   padding-block-start: 5vh;
   text-align: center; 

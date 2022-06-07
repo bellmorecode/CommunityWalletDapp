@@ -10,34 +10,25 @@ function App() {
   const [commWalletTotal, setCommWalletTotal] = useState(0.000000001);
   // this is where you set your community wallet and your goal in Ethereum. 
   // this is setup as an array, but the UI presently only supports the first item in the list.
-  const getCommunityWalletDetails = () => {
-    return [{
-      wallet: "0xB7f34dcD629989B529aBb39d2ad7a9CFc1B653D5",
-      goal: 0.25
-    }];
-  }
+  const getCommunityWalletDetails = () => { return [{ wallet: "0xB7f34dcD629989B529aBb39d2ad7a9CFc1B653D5", goal: 0.25 }]; }
   const connectWalletHandler = () => {
       if (window.ethereum) {
         let eth = window.ethereum;
         eth.request({ method: 'eth_requestAccounts' })
             .then(wallets => {
-              if (wallets.length !== 0) {
-                setCurrentAccount(wallets[0]);
-                
-              }
+              if (wallets.length !== 0) { setCurrentAccount(wallets[0]); }
             })
             .catch(err => { setConnectErrorMessage(err.message); });
       }
   }
   const connectWalletButton = () => {
     return (
-      <button onClick={connectWalletHandler} className='connect-wallet-button'>
-        Connect your wallet
-      </button>
+      <button onClick={connectWalletHandler} className='connect-wallet-button'> Connect your wallet </button>
     )
   }
-  const donateAmountChangedHandler = () => {
-      console.log({changed: 1});
+  const donateAmountChangedHandler = () => { 
+    console.log({changed: 1}); 
+    // do something else here.  add you're own logic.
   }
   const handleDonateButton = () => {
     let comm_wallet = getCommunityWalletDetails()[0];

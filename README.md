@@ -8,4 +8,6 @@ The object is to create a re-useable template for a web3 site to enable groups o
 
 ## How it work...
 
-There is some code at the top of the 'App.js' file that allows you to define your community wallet address and a goal.   The site will facilitate community members to connecting their wallets and donating to the cause. 
+There is some code at the top of the 'App.js' file that allows you to define your community wallet address and a goal.   
+
+The site will facilitate community members to connecting their wallets and donating to the cause. 

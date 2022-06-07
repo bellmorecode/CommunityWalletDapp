@@ -2,11 +2,9 @@
 
 React App for gathering donations to a community wallet.
 
-The sample site can be explored here: https://communitywalletdemo.azurewebsites.net/
-
 This application was build with react, nodejs, web3 (npm package), ethers (npm package), and bignumber.js (npm package)
 
-The oject is to create a re-useable template for a community site to enable groups of people to collects funds on the ethereum (or polygon) network.  
+The object is to create a re-useable template for a web3 site to enable groups of people to collects funds on the ethereum (or polygon) network.  
 
 ## How it work...
 
